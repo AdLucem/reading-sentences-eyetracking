@@ -32,7 +32,7 @@ class TrackEye:
 
     def get_eye_plot(self, plt_):
 
-        plt_.plot(self.x, self.y, alpha=0.5)
+        plt_.scatter(self.x, self.y, marker=".", alpha=0.5)
 
 
 class Frame:

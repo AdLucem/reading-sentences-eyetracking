@@ -68,8 +68,6 @@ if __name__ == "__main__":
 
 		# get name, data for session
 		name = subj.rstrip(".txt")
-		print("----------------------------------------")
-		print("Subject:", name)
 		itribe_data = load_data(FOLDER + subj)
 
 		# get start/stop time for session
@@ -96,11 +94,9 @@ if __name__ == "__main__":
 			sess = Session(itribe_data, start, end)
 			sent_tracks.append(sess)
 
-			print("Segment", str(i), "starting at:", end="")
-			start.print()
 			# increment start value
 			start.add(per_s)
-
+		
 			# initialize matplotlib figure
 			fig = plt.figure()
 			ax = fig.add_subplot(111)
@@ -124,7 +120,7 @@ if __name__ == "__main__":
 
 			plots.append(plotname)
 			#plt.show()
-			plt.close()
+			plt.clf()
 		# stack all the graphs vertically
 		stack_graphs(plots, name + ".png")
 	#test.print_by_index(0)
