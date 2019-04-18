@@ -21,10 +21,18 @@ class TrackEye:
         self.x = list(map(lambda x: x['raw']['x'], eye_data))
         self.y = list(map(lambda y: y['raw']['y'], eye_data))
 
-    def get_eye_plot(self):
+    def scale(self, xrange, yrange):
 
-        plt.plot(self.x, self.y)
-        return plt
+        eye_x = 1960
+        eye_y = 1080
+        x_r = xrange/eye_x
+        y_r = yrange/eye_y
+        self.x = [x*x_r for x in self.x]
+        self.y = [y*y_r for y in self.y]
+
+    def get_eye_plot(self, plt_):
+
+        plt_.plot(self.x, self.y, alpha=0.5)
 
 
 class Frame:
@@ -57,7 +65,6 @@ class Session:
 
         self.begin_at(begin)
         self.end_at(end)
-        print(len(self.frames))
 
         reye_dat = [x.righteye for x in self.frames]
         leye_dat = [x.lefteye for x in self.frames]
